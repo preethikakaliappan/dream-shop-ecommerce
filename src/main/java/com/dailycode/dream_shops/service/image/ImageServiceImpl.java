@@ -28,7 +28,7 @@ public class ImageServiceImpl implements ImageService{
     @Autowired
     private ProductService productService;
 
-    @Autowired
+
 
 
     @Override
