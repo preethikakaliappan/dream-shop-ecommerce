@@ -8,8 +8,7 @@ import com.dailycode.dream_shops.request.ProductUpdateRequest;
 import com.dailycode.dream_shops.response.ApiResponse;
 import com.dailycode.dream_shops.service.product.ProductService;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -115,7 +114,7 @@ public class ProductController {
             return ResponseEntity.status(INTERNAL_SERVER_ERROR).body(new ApiResponse( "error",e.getMessage()));
         }
     }
-    @GetMapping("/products/by-brand")
+    @GetMapping("/product/by-brand")
     public ResponseEntity<ApiResponse> findProductByBrand(@RequestParam String brand){
        try{
            List<Product> products = productService.getProductsByBrand(brand);

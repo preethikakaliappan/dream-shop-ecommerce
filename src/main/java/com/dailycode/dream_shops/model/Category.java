@@ -1,5 +1,6 @@
 package com.dailycode.dream_shops.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,10 +21,10 @@ public class Category {
     private Long id;
     private String name;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "category", cascade = CascadeType.DETACH, orphanRemoval = true)
 
-  // @OneToMany(mappedBy = "category", cascade = CascadeType.DETACH, orphanRemoval = true)
-
-    @OneToMany(mappedBy = "category")
+    //@OneToMany(mappedBy = "category")
     private List<Product> products;
 
     public Category(String name) {

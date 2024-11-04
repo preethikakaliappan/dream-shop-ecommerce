@@ -9,6 +9,7 @@ import com.dailycode.dream_shops.response.ApiResponse;
 import com.dailycode.dream_shops.service.image.ImageService;
 import com.dailycode.dream_shops.service.image.ImageServiceImpl;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.*;
@@ -26,12 +27,14 @@ import static org.springframework.http.HttpStatus.NOT_FOUND;
 @RestController
 @RequestMapping("${api.prefix}/images")
 public class ImageController {
+
+    @Autowired
     private ImageService imageService;
 
     @PostMapping("/upload")
     public ResponseEntity<ApiResponse> saveImages(@RequestParam List<MultipartFile> files,@RequestParam Long productId){
         try {
-            List<ImageDto> imageDtos = imageService.saveImages(files,productId);
+            List<ImageDto> imageDtos= imageService.saveImages(files,productId);
             return ResponseEntity.ok(new ApiResponse("Upload Success",imageDtos));
         } catch (RuntimeException e) {
              return ResponseEntity.status(INTERNAL_SERVER_ERROR).body(new ApiResponse("upload Failed!",e.getMessage()));

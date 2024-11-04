@@ -26,13 +26,20 @@ public class Product {
     private BigDecimal price;
     private int inventory;  // quantity
 
-    @ManyToOne(cascade = CascadeType.DETACH)
+  /* *//* @ManyToOne(cascade = CascadeType.DETACH)
     @JsonIgnore
     private Category category;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Image> images = new ArrayList<>();  // initialize to avoid NullPointerException
+*/
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "category_id")
+    private Category category;
+
+    @OneToMany(mappedBy = "product",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<Image>  images;
 
 
 
