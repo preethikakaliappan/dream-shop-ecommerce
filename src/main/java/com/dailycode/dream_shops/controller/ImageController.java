@@ -4,17 +4,15 @@ package com.dailycode.dream_shops.controller;
 import com.dailycode.dream_shops.Exception.ResourceNotFoundException;
 import com.dailycode.dream_shops.dto.ImageDto;
 import com.dailycode.dream_shops.model.Image;
-import com.dailycode.dream_shops.model.Product;
 import com.dailycode.dream_shops.response.ApiResponse;
 import com.dailycode.dream_shops.service.image.ImageService;
-import com.dailycode.dream_shops.service.image.ImageServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.HttpServerErrorException;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import java.sql.SQLException;
